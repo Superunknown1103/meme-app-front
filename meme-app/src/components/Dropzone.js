@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import './Dropzone.css';
-import poo from '../images/poo.png'
+import poo from '../images/poo.png';
+import checkmark from '../images/checkmark.png';
 
 export default class Dropzone extends Component {
     constructor(props) {
         super(props)
         //state
-        this.state = {highlight: false};
+        this.state = {
+            highlight: false,
+            uploadText: 'Drop your meme here!'
+        };
         // create Ref
         this.fileInputRef = React.createRef();
         // binding
@@ -62,7 +66,8 @@ export default class Dropzone extends Component {
             const array = this.fileListToArray(files);
             this.props.onFilesAdded(array);
         }
-        this.setState({ highlight: false });
+        this.setState({ highlight: false, uploadText: files[0].name });
+        console.log(files[0]);
     }
 
     render() {
@@ -78,7 +83,7 @@ export default class Dropzone extends Component {
                 <img
                     alt="Drop icon"
                     className="Icon"
-                    src={poo}
+                    src={this.state.uploadText === 'Drop your meme here!' ? poo : checkmark}
                 />
                 <input
                     ref={this.fileInputRef}
@@ -87,7 +92,8 @@ export default class Dropzone extends Component {
                     multiple
                     onChange={this.onFilesAdded}
                 />
-                <span>Drop your meme here</span>
+                <br />
+                <span>{this.state.uploadText}</span>
             </div>
         )
     }
