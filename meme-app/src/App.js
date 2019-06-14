@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Uploader from './components/Uploader';
+import MemeCollection from './components/MemeCollection';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      loggedIn: true,
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        {/* Vote for Memes */}
+         <h2> // Flatiron Meme Department </h2>
+        <Switch>
+          {/* <Route path="/login" component={Login} /> */}
+          <Route path="/vote" component={MemeCollection} />
+          <Route path="/upload" component={Uploader} />
+        </Switch>
+      </div>
+    );
+  }
 }
 
-export default App;
