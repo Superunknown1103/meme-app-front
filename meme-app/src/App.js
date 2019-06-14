@@ -15,7 +15,6 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {/* Vote for Memes */}
          <h2> // Flatiron Meme Department </h2>
         <Switch>
           {/* <Route path="/login" component={Login} /> */}

@@ -1,5 +1,6 @@
 import React from 'react';
 import Meme from './Meme';
+import { Link } from 'react-router-dom';
 
 export default class MemeCollection extends React.Component {
     constructor() {
@@ -7,13 +8,18 @@ export default class MemeCollection extends React.Component {
         this.state = {
             memes: []
         }
-    }
+    } 
 
     render() {
         return (
             <div>
-                <div>To do: render images that I can upvote</div>
-                <Meme name="test" src="" votes="" />
+                <Link style={{textDecoration: 'underline', paddingBottom: '20px' }} to="/highscores">View High Scores</Link>
+                <br />
+                <Meme
+                 name="test" 
+                 src="http://www.quickmeme.com/img/94/940d9eb9c57d1adad412682cd2e94e1fee75ac0854cca8e59eb1d011158fd61f.jpg" 
+                 votes="5"
+                  />
             </div>
         )
     }
