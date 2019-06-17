@@ -8,18 +8,27 @@ export default class MemeCollection extends React.Component {
         this.state = {
             memes: []
         }
-    } 
+    }
+
+    componentDidMount() {
+        let URL = "http://localhost:3000/api/v1/memes/";
+        fetch(URL)
+            .then(resp => resp.json())
+            .then(memes => this.makeMemeComponents(memes))
+    }
+
+    makeMemeComponents = (memes) => {
+        this.setState({
+            memes: memes.map(m => <Meme src={m.src} votes={m.votes} />)
+        })
+    }
 
     render() {
         return (
             <div>
-                <Link style={{textDecoration: 'underline', paddingBottom: '20px' }} to="/highscores">View High Scores</Link>
+                <Link style={{ textDecoration: 'underline', paddingBottom: '20px' }} to="/highscores">View High Scores</Link>
                 <br />
-                <Meme
-                 name="test" 
-                 src="http://www.quickmeme.com/img/94/940d9eb9c57d1adad412682cd2e94e1fee75ac0854cca8e59eb1d011158fd61f.jpg" 
-                 votes="5"
-                  />
+                {this.state.memes}
             </div>
         )
     }
