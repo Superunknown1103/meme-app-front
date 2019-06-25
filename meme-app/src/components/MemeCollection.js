@@ -18,6 +18,7 @@ export default class MemeCollection extends React.Component {
     }
 
     makeMemeComponents = (memes) => {
+        console.log(memes)
         this.setState({
             memes: memes.map(m => <Meme src={m.src} votes={m.votes} />)
         })
@@ -26,7 +27,9 @@ export default class MemeCollection extends React.Component {
     render() {
         return (
             <div>
-                <Link style={{ textDecoration: 'underline', paddingBottom: '20px' }} to="/highscores">View High Scores</Link>
+                <Link style={{ textDecoration: 'underline', paddingBottom: '20px' }} to="/highscores">
+                    View High Scores
+                </Link>
                 <br />
                 {this.state.memes}
             </div>
