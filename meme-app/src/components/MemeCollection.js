@@ -18,9 +18,8 @@ export default class MemeCollection extends React.Component {
     }
 
     makeMemeComponents = (memes) => {
-        console.log(memes)
         this.setState({
-            memes: memes.map(m => <Meme src={m.src} votes={m.votes} />)
+            memes: memes.map(m => <Meme src={m.link} votes={m.meme.votes} />)
         })
     }
 

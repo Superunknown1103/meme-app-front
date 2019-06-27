@@ -18,17 +18,6 @@ export default class Uploader extends Component {
         })
     }
 
-    base64encoder = (file) => {
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function () {
-            console.log(reader.result);
-        };
-        reader.onerror = function (error) {
-            console.log('Error: ', error);
-        };
-    }
-
     handleSubmit = (e) => {
         e.preventDefault();
         // get File Object
