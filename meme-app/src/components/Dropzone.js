@@ -40,6 +40,9 @@ export default class Dropzone extends Component {
         if (this.props.onFilesAdded) {
             const array = this.fileListToArray(files);
             this.props.onFilesAdded(array);
+            this.setState({
+                uploadText: 'Uploaded!'
+            })
         }
     }
 

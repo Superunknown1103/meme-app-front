@@ -5,7 +5,7 @@ import HighScores from './HighScores';
 import Link from 'react-router';
 
 const Meme = (props) => {
-    let { name, src, votes } = props;
+    let { id, name, src, votes, upVote } = props;
 
     return (
         <div>
@@ -13,7 +13,8 @@ const Meme = (props) => {
                 <Row>
                     <div className="MemeHolder">
                         <div className="MemeChild">
-                            <img className="UpVote" width="50px" height="50px" src={Upvote} />
+                            <img onClick={() => upVote(id)} className="UpVote" width="50px" height="50px" src={Upvote} />
+                            <span style={{paddingRight: '10px', fontStyle: 'italic'}}>{votes}</span>
                             <img className="MemePhoto" src={src} width="400px" height="400px" />
                         </div>
                     </div>
