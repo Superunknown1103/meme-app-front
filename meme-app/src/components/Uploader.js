@@ -28,6 +28,7 @@ export default class Uploader extends Component {
         data.append('meme[votes]', 0);
         fetch('http://localhost:3000/api/v1/memes', {
             method: 'POST',
+            mode: 'no-cors',
             headers: {
                 'Accepts': "application/json"
             },

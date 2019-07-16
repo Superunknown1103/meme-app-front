@@ -19,6 +19,15 @@
   color: white;
 } */
 
+/* login css */
+
+.login {
+    margin: 2% auto;
+    width: 30%;
+    background-color: gainsboro;
+    padding: 5%;
+}
+
 .memeDropZone {
   color: blue;
   height: 30vh;
