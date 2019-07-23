@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
-import $ from 'jquery';
+import  h  from '../helpers/helper'
 
 export default class Login extends Component {
   constructor(props) {
@@ -8,10 +8,18 @@ export default class Login extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      name: 'test'
     };
 
-    this.server = "http://localhost:3000/";
+  }
+
+  componentDidMount() {
+    if (h.user) {
+      this.setState({
+        email: h.user
+      })
+    }
   }
 
   validateForm() {
@@ -27,25 +35,22 @@ export default class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
     let data = new FormData();
-    data.append('user[name]', this.state.email);
+    data.append('user[name]', this.state.name);
     data.append('user[pass]', this.state.password);
-    fetch(this.server + 'api/v1/users/', {
+    data.append('user[email]', this.state.email);
+    fetch(h.server + '/authenticate', {
       method: "POST",
-      mode: "no-cors",
       headers: {
         'Accepts': 'application/json',
       },
       body: data,
-    }).then(resp => {
-      console.log(resp)
-    });
-    // sessionStorage.setItem('user', JSON.stringify({
-    //   'access-token': jqXHR.getResponseHeader('access-token'),
-    //   client: jqXHR.getResponseHeader('client'),
-    //   uid: response.data.uid
-    // }));
-    // this.props.history.push('/vote')
-    // .catch((err) => alert(err));
+    }).then(resp => resp.json())
+      .then(data => {
+          h.set_user(data.u_id);
+          h.set_token(data.token)
+          window.location = window.location.origin + '/vote'
+      })
+      .catch(err => alert(err))
   }
 
   render() {

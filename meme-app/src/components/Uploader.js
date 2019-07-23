@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Dropzone from './Dropzone';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import h from '../helpers/helper'
 
 export default class Uploader extends Component {
     constructor(props) {
@@ -9,6 +10,7 @@ export default class Uploader extends Component {
             img: '',
             disabled: false
         }
+        
     }
 
     handleFileUpload = (e) => {
@@ -24,9 +26,9 @@ export default class Uploader extends Component {
         var fileObject = this.state.img
         let data = new FormData();
         data.append('meme[link]', fileObject);
-        data.append('meme[user_id]', 1);
+        data.append('meme[user_id]', h.user);
         data.append('meme[votes]', 0);
-        fetch('http://localhost:3000/api/v1/memes', {
+        fetch(h.server + 'api/v1/memes', {
             method: 'POST',
             mode: 'no-cors',
             headers: {

@@ -1,6 +1,7 @@
 import React from 'react';
 import Meme from './Meme';
 import { Link } from 'react-router-dom';
+import h from '../helpers/helper'
 
 export default class MemeCollection extends React.Component {
     constructor() {
@@ -8,20 +9,17 @@ export default class MemeCollection extends React.Component {
         this.state = {
             memes: []
         }
-
-        this.server = "http://localhost:3000/api/v1/";
     }
 
     componentDidMount() {
-        let URL = this.server + "memes/";
+        let URL = h.server + "api/v1/memes/";
         fetch(URL)
             .then(resp => resp.json())
             .then(memes => this.makeMemeComponents(memes))
     }
 
     upVote = (id) => {
-        debugger;
-        fetch(this.server + "memes/upvote/" + id, {
+        fetch(h.server + "memes/upvote/" + id, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
