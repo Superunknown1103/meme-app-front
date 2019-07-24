@@ -14,7 +14,7 @@ const Meme = (props) => {
                     <div className="MemeHolder">
                         <div className="MemeChild">
                             <img onClick={() => upVote(id)} className="UpVote" width="50px" height="50px" src={Upvote} />
-                            <span style={{paddingRight: '10px', fontStyle: 'italic'}}>{votes}</span>
+                            <span id={'upvote' + id} style={{paddingRight: '10px', fontStyle: 'italic'}}>{votes}</span>
                             <img className="MemePhoto" src={src} width="400px" height="400px" />
                         </div>
                     </div>

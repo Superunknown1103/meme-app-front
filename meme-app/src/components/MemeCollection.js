@@ -1,7 +1,7 @@
 import React from 'react';
 import Meme from './Meme';
 import { Link } from 'react-router-dom';
-import h from '../helpers/helper'
+import h from '../helpers/helper';
 
 export default class MemeCollection extends React.Component {
     constructor() {
@@ -19,13 +19,18 @@ export default class MemeCollection extends React.Component {
     }
 
     upVote = (id) => {
-        fetch(h.server + "memes/upvote/" + id, {
+        fetch(h.server + "api/v1/memes/upvote/" + id, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(id)
-        })
+            body: JSON.stringify({ id, user: localStorage.getItem('u_id') })
+        }).then((resp) => (resp.json()))
+            .then((json) => {
+                if (json.permitted) {
+                    document.getElementById('upvote' + id).innerHTML = json.meme.votes
+                }
+            }).catch((err) => alert(err))
     }
 
     makeMemeComponents = (memes) => {
