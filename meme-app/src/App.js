@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Uploader from './components/Uploader';
 import MemeCollection from './components/MemeCollection';
+import HighScores from './components/HighScores';
 import Login from './components/Login';
 import SignUp from './components/Signup';
 
@@ -24,6 +25,7 @@ export default class App extends React.Component {
           <Route path="/signup" component={SignUp} />
           <Route path="/vote" component={MemeCollection} />
           <Route path="/upload" component={Uploader} />
+          <Route path="/highscores" component={HighScores} />
         </Switch>
       </div>
     );
