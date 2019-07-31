@@ -5,26 +5,21 @@ import MemeCollection from './components/MemeCollection';
 import HighScores from './components/HighScores';
 import Login from './components/Login';
 import SignUp from './components/Signup';
-
+import Navigation from './components/Navigation';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { PrivateRoute } from './helpers/PrivateRoute';
+import h from './helpers/helper'
 
 export default class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      loggedIn: true,
-    }
-  }
-
   render() {
     return (
       <div className="App">
-         <h2> // Flatiron Meme Department </h2>
+        <Navigation />
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/vote" component={MemeCollection} />
-          <Route path="/upload" component={Uploader} />
+          <PrivateRoute path="/vote" component={MemeCollection} />
+          <PrivateRoute path="/upload" component={Uploader} />
           <Route path="/highscores" component={HighScores} />
         </Switch>
       </div>

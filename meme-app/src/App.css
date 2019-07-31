@@ -75,3 +75,7 @@
 .MemePhoto {
   border: double 5px black;
 }
+
+.navbar {
+  margin-bottom: 3vh !important
+}
