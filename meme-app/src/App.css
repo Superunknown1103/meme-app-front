@@ -52,28 +52,23 @@
   }
 }
 
-.MemeHolder {
-  margin: 0 auto;
-}
-
 .UpVote {
   padding: 10px;
   background-color: lightskyblue;
-  margin-right: 10px;
   border: 2px solid black;
 }
 
 .UpVote:hover {
   background-color: whitesmoke;
-  margin-bottom: 10px;
 }
 
 .UpVote:active {
   background-color: yellow;
 }
 
-.MemePhoto {
-  border: double 5px black;
+.MemeChild {
+  width: 30%;
+  padding: 1%;
 }
 
 .navbar {

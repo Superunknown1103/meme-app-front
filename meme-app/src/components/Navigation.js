@@ -17,8 +17,9 @@ export default class Navigation extends React.Component {
                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
                  <Navbar.Collapse id="basic-navbar-nav">
                      <Nav className="mr-auto">
-                         <Nav.Link href="/highscores">High Scores</Nav.Link>
+                         <Nav.Link name="test" href="/highscores">High Scores</Nav.Link>
                          <Nav.Link href="/Vote">Vote</Nav.Link>
+                         <Nav.Link href="/Upload">Upload</Nav.Link>
                          <Nav.Link onClick={() => {this.logout()}}>Logout</Nav.Link>
                          {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

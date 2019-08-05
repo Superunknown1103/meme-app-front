@@ -95,7 +95,7 @@ export default class SignUp extends Component {
                         disabled={!this.validateForm()}
                         type="submit"
                     >
-                        Login
+                        Create Account
           </Button>
                 </form>
             </div>

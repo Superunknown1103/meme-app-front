@@ -21,7 +21,7 @@ export default class HighScores extends Component {
 
     makeMemeComponents = (memes) => {
         this.setState({
-            memes: memes.map(m => <MemeTableElement id={m.meme.id} src={m.link} votes={m.meme.votes} name={m.meme.user_id} />)
+            memes: memes.map(m => <MemeTableElement name={m.name} id={m.meme.id} src={m.link} votes={m.meme.votes} />)
         })
     }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import Meme from './Meme';
 import { Link } from 'react-router-dom';
 import h from '../helpers/helper';
+import { Row } from 'react-bootstrap';
 
 export default class MemeCollection extends React.Component {
     constructor() {
@@ -35,18 +36,20 @@ export default class MemeCollection extends React.Component {
 
     makeMemeComponents = (memes) => {
         this.setState({
-            memes: memes.map(m => <Meme id={m.meme.id} upVote={this.upVote} src={m.link} votes={m.meme.votes} name={m.meme.user_id} />)
+            memes: memes.map(m => <Meme id={m.meme.id} upVote={this.upVote} src={m.link} votes={m.meme.votes} name={m.name} />)
         })
     }
 
     render() {
         return (
-            <div>
+            <div class="memeCollectionDiv">
                 <Link style={{ textDecoration: 'underline', paddingBottom: '20px' }} to="/highscores">
                     View High Scores
                 </Link>
                 <br />
+                <Row>
                 {this.state.memes}
+                </Row>
             </div>
         )
     }

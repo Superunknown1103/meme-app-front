@@ -6,18 +6,14 @@ let h = {
     server: "http://localhost:3000/",
     // check for authentication
     isAuthenticated: async () => {
-        // try {
             let prom =  fetch(h.server + '/verify_auth')
             .then(res => res.json())
             .then(json => {
-                console.log('2')
                 return json.authenticated
             })
             await prom
+            console.log(prom);
             return prom
-        // } catch (err) {
-        //     console.log(err)
-        // }
     },
     // retrieve user
     user: localStorage.getItem('u_id') ? localStorage.getItem('u_id') : '',
@@ -28,7 +24,11 @@ let h = {
     // save token
     set_token: (token) => { localStorage.setItem('token', token) },
     // clear user
-    clear_user: () => { localStorage.removeItem('u_id') },
+    clear_user: async () => {
+            let prom = fetch(h.server + '/logout')
+            await prom
+            return prom
+    },
     // clear token
     clear_token: () => { localStorage.removeItem('token') }
 }
