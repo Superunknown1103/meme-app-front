@@ -39,14 +39,20 @@ export default class SignUp extends Component {
                 body: data,
             }).then(resp => resp.json())
                 .then(data => {
-                    h.set_user(data.u_id);
-                    h.set_token(data.token)
-                    window.location = window.location.origin + '/vote'
+                    // debugger;
+                    // h.set_user(data.u_id);
+                    // h.set_token(data.token)
+                    // window.location = window.location.origin + '/vote'
+                    console.log(data)
                 })
                 .catch(err => alert(err))
         } else {
             alert('passwords do not match')
         }
+    }
+
+    redirectToLogIn = () => {
+        window.location = window.location.origin + '/login'
     }
 
     render() {
@@ -96,6 +102,14 @@ export default class SignUp extends Component {
                         type="submit"
                     >
                         Create Account
+          </Button>
+          <Button
+            block
+            bsSize="small"
+            variant="info"
+            onClick={() => { this.redirectToLogIn()}}
+          >
+            Back To Login
           </Button>
                 </form>
             </div>

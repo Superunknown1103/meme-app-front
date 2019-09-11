@@ -10,6 +10,10 @@ export default class Navigation extends React.Component {
         window.location.href = "/login"
     }
 
+    editUser = () => {
+        window.location.href = "/edituser"
+    }
+
     render() {
         return (
             <Navbar bg="light" expand="lg">
@@ -28,6 +32,9 @@ export default class Navigation extends React.Component {
                              <NavDropdown.Divider />
                              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                          </NavDropdown> */}
+                     </Nav>
+                     <Nav onClick={() => {this.editUser()}} className="ml-auto u_name_field">
+                         {}
                      </Nav>
                      {/* <Form inline>
                          <FormControl type="text" placeholder="Search" className="mr-sm-2" />

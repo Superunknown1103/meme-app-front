@@ -6,6 +6,7 @@ import HighScores from './components/HighScores';
 import Login from './components/Login';
 import SignUp from './components/Signup';
 import Navigation from './components/Navigation';
+import EditUser from './components/EditUser';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { PrivateRoute } from './helpers/PrivateRoute';
 import h from './helpers/helper'
@@ -19,6 +20,7 @@ export default class App extends React.Component {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
           <Route path="/signup" component={SignUp} />
+          <PrivateRoute path="/edituser" component={EditUser} />
           <PrivateRoute path="/vote" component={MemeCollection} />
           <PrivateRoute path="/upload" component={Uploader} />
           <Route path="/highscores" component={HighScores} />

@@ -74,3 +74,11 @@
 .navbar {
   margin-bottom: 3vh !important
 }
+
+.u_name_field {
+  font-style: italic;
+}
+
+.u_name_field :hover {
+  cursor: pointer;
+}

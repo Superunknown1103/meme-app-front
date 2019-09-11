@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
-import  h  from '../helpers/helper'
+import h from '../helpers/helper'
 
 export default class Login extends Component {
   constructor(props) {
@@ -35,22 +35,27 @@ export default class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
     let data = new FormData();
-    data.append('user[name]', this.state.name);
     data.append('user[pass]', this.state.password);
     data.append('user[email]', this.state.email);
-    fetch(h.server + '/authenticate', {
+    fetch(h.server + 'authenticate', {
       method: "POST",
+      mode: 'no-cors',
       headers: {
         'Accepts': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: data,
     }).then(resp => resp.json())
       .then(data => {
-          h.set_user(data.u_id);
-          h.set_token(data.token)
-          window.location = window.location.origin + '/vote'
+        h.set_user(data.u_id, data.u_name);
+        h.set_token(data.token)
+        // window.location = window.location.origin + '/vote'
       })
       .catch(err => alert(err))
+  }
+  
+  redirectToSignUp = () => {
+    window.location = window.location.origin + '/signup'
   }
 
   render() {
@@ -83,6 +88,14 @@ export default class Login extends Component {
             type="submit"
           >
             Login
+          </Button>
+          <Button
+            block
+            bsSize="small"
+            variant="info"
+            onClick={() => { this.redirectToSignUp() }}
+          >
+            Sign Up
           </Button>
         </form>
       </div>
